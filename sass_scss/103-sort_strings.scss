@@ -1,3 +1,28 @@
 /* Sort */
 $list_to_sort: john anna zoe kim felicia carrie;
-@debug sort($list_to_sort);
+
+$unsorted_list: ();
+@each $item in $list_to_sort {
+  $unsorted_list: append($unsorted_list, $item);
+}
+
+@function sort-strings($list) {
+  $sorted: ();
+
+  @while length($list) > 0 {
+    $lowest: nth($list, 1);
+    @for $i from 2 through length($list) {
+      $item: nth($list, $i);
+      @if $item < $lowest {
+        $lowest: $item;
+      }
+    }
+    $sorted: append($sorted, $lowest);
+    $list: remove($list, index($list, $lowest));
+  }
+
+  @return $sorted;
+}
+
+$sorted_list: sort-strings($unsorted_list);
+@debug "#{$sorted_list}";
