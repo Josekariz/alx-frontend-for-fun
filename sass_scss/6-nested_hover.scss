@@ -1,8 +1,11 @@
-/* 6-nested_hover.scss*/
+/* Task: Assign text color to button tags and change color on hover */
 
+// Assign text color #FF0000 to button tags
 button {
-  color: #FF0000;
-&:hover {
-    color: #00FF00;
+    color: #FF0000;
+    
+    // Change text color to #00FF00 on hover
+    &:hover {
+      color: #00FF00;
+    }
   }
-}
